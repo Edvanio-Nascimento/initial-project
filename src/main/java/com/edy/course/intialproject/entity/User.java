@@ -37,6 +37,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    private User(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.login = builder.login;
+        this.password = builder.password;
+        this.email = builder.email;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -72,6 +80,44 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public static class Builder {
+        private UUID id;
+        private String name;
+        private String login;
+        private String password;
+        private String email;
+
+        public Builder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder login(String login) {
+            this.login = login;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {

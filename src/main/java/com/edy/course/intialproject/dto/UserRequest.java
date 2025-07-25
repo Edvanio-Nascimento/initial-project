@@ -1,5 +1,6 @@
 package com.edy.course.intialproject.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -18,7 +19,8 @@ public record UserRequest(
         String password,
 
         @NotBlank(message = "O campo email não pode ser nulo")
-        @Size(min = 5, max = 30, message = "O campo senha deve conter no mínimo 5 e máximo 20 caracteres")
+        @Size(min = 5, max = 30, message = "O campo email deve conter no mínimo 5 e máximo 20 caracteres")
+        @Email(message = "O campo email deve ser válido")
         String email
 ) {
 }
